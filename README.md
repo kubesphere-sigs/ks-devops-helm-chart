@@ -30,3 +30,4 @@ See chart [readme](charts/ks-devops/README.md) for install and config options.
 You can [browse the chart repository](https://kubesphere-sigs.github.io/ks-devops-helm-chart/)
 
 Or view the YAML at: [index.yaml](https://kubesphere-sigs.github.io/ks-devops-helm-chart/index.yaml)
+
