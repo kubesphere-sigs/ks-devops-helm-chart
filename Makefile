@@ -28,3 +28,6 @@ reinstall-jenkins-chart:
 
 package-chart:
 	cd charts && helm package ks-devops
+
+fetch-crds:
+	./hack/fetch-crds.sh
