@@ -92,7 +92,9 @@ Master:
 
   ContainerEnv:
     - name: CASC_JENKINS_CONFIG
-      value: "/var/jenkins_home/casc_configs/jenkins.yaml"
+      value: "/var/jenkins_home/casc_configs/"
+    - name: CASC_MERGE_STRATEGY
+      value: override
     - name: com.sun.jndi.ldap.connect.timeout
       value: "15000"
     - name: com.sun.jndi.ldap.read.timeout
