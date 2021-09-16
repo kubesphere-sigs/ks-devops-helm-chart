@@ -16,7 +16,7 @@ spec:
     singular: pipelinerun
   scope: Namespaced
   versions:
-  - name: v1alpha4
+  - name: v1alpha3
     schema:
       openAPIV3Schema:
         description: PipelineRun is the Schema for the pipelineruns API
@@ -36,6 +36,9 @@ spec:
           spec:
             description: PipelineRunSpec defines the desired state of PipelineRun
             properties:
+              action:
+                description: Action indicates what we need to do with current PipelineRun.
+                type: string
               parameters:
                 description: Parameters are some key/value pairs passed to runner.
                 items:
