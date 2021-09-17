@@ -24,7 +24,7 @@ spec:
                 - ks
                 - pip
                 - gc
-              image: {{ tpl .Values.image.tools.repository . }}:{{ tpl .Values.image.tools.tag . }}
+              image: "{{ .Values.image.registry }}/{{ tpl .Values.image.tools.repository . }}:{{ tpl .Values.image.tools.tag . }}"
               imagePullPolicy: {{ tpl .Values.image.pullPolicy . }}
               args:
                 - "--max-count={{ .Values.gcJobs.maxCount }}"
