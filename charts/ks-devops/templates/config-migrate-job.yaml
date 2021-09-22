@@ -8,8 +8,8 @@ spec:
     spec:
       containers:
         - name: migrate
-          image: ghcr.io/linuxsuren/ks/ks:v0.0.37
-          command: ["/ks", "option", "migrate", "--service", '{{ include "ks-devops.fullname" . }}-apiserver.{{ .Release.Namespace }}:9090', "--namespace", "{{ .Release.Namespace }}"]
+          image: "{{ .Values.image.registry }}/{{ tpl .Values.image.tools.repository . }}:{{ tpl .Values.image.tools.tag . }}"
+          command: ["ks", "option", "migrate", "--service", '{{ include "ks-devops.fullname" . }}-apiserver.{{ .Release.Namespace }}:9090', "--namespace", "{{ .Release.Namespace }}"]
       serviceAccountName:  {{ include "ks-devops.serviceAccountName" . }}
       restartPolicy: Never
   backoffLimit: 4
