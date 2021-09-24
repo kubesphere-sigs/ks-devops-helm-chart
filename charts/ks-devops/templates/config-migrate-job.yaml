@@ -12,4 +12,4 @@ spec:
           command: ["ks", "option", "migrate", "--service", '{{ include "ks-devops.fullname" . }}-apiserver.{{ .Release.Namespace }}:9090', "--namespace", "{{ .Release.Namespace }}"]
       serviceAccountName:  {{ include "ks-devops.serviceAccountName" . }}
       restartPolicy: Never
-  backoffLimit: 4
+  backoffLimit: 100
