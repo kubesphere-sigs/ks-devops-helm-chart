@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
         - name: migrate
-          image: "{{ .Values.image.registry }}/{{ tpl .Values.image.tools.repository . }}:{{ tpl .Values.image.tools.tag . }}"
+          image: "{{ .Values.image.registry }}/{{ .Values.image.tools.repository }}:{{ .Values.image.tools.tag }}"
           command: ["ks", "option", "migrate", "--service", '{{ include "ks-devops.fullname" . }}-apiserver.{{ .Release.Namespace }}:9090', "--namespace", "{{ .Release.Namespace }}"]
       serviceAccountName:  {{ include "ks-devops.serviceAccountName" . }}
       restartPolicy: Never
