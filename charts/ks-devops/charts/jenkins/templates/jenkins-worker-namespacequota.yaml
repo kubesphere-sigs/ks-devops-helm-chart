@@ -1,3 +1,4 @@
+{{- if .Values.Agent.ResourceQuota.Enabled -}}
 apiVersion: v1
 kind: ResourceQuota
 metadata:
@@ -7,3 +8,4 @@ spec:
   hard:
     limits.cpu: "3000m"
     limits.memory: "3072Mi"
+{{- end }}
