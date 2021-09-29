@@ -18,7 +18,7 @@ gcJobs:
   # gcJobs.maxAge -- Max age from which `PipelineRun`s will be deleted
   maxAge: 168h
   # gcJobs.maxCount -- Max count from which `PipelineRun`s will be deleted
-  maxCount: 10
+  maxCount: 30
   # gcJobs.schedule -- Cron expression to periodically delete `PipelineRun`s
   schedule: "0/30 * * * *"
   # gcJobs.failedJobsHistoryLimit -- Drives the failed jobs history limit
