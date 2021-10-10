@@ -23,7 +23,7 @@ helm search repo ks-devops
 
 ## Configuration
 
-See chart [readme](charts/ks-devops/README.md) for install and config options.
+See chart [readme](https://github.com/kubesphere-sigs/ks-devops-helm-chart/blob/master/charts/ks-devops/README.md) for install and config options.
 
 ## Repository
 
