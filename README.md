@@ -27,7 +27,7 @@ See chart [readme](https://github.com/kubesphere-sigs/ks-devops-helm-chart/blob/
 
 ## Repository
 
-You can [browse the chart repository](https://github.com/kubesphere-sigs/ks-devops-helm-chart)
+You can [browse the chart repository](https://github.com/kubesphere-sigs/ks-devops-helm-chart), [browse the site](https://kubesphere-sigs.github.io/ks-devops-helm-chart/) 
 
 Or view the YAML at: [index.yaml](https://kubesphere-sigs.github.io/ks-devops-helm-chart/index.yaml)
 
