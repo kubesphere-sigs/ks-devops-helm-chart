@@ -1,4 +1,8 @@
+{{- if .Capabilities.APIVersions.Has "admissionregistration.k8s.io/v1" }}
+apiVersion: admissionregistration.k8s.io/v1
+{{- else }}
 apiVersion: admissionregistration.k8s.io/v1beta1
+{{- end }}
 kind: MutatingWebhookConfiguration
 metadata:
   name: mutating-webhook-configuration
@@ -23,7 +27,11 @@ webhooks:
         resources:
           - s2ibuilders
 ---
+{{- if .Capabilities.APIVersions.Has "admissionregistration.k8s.io/v1" }}
+apiVersion: admissionregistration.k8s.io/v1
+{{- else }}
 apiVersion: admissionregistration.k8s.io/v1beta1
+{{- end }}
 kind: ValidatingWebhookConfiguration
 metadata:
   name: validating-webhook-configuration
