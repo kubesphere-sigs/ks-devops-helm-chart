@@ -16,6 +16,8 @@ webhooks:
         path: /mutate-devops-kubesphere-io-v1alpha1-s2ibuilder
     failurePolicy: Fail
     name: s2ibuilder.kb.io
+    sideEffects: None
+    admissionReviewVersions: ["v1", "v1beta1"]
     rules:
       - apiGroups:
           - devops.kubesphere.io
@@ -45,6 +47,8 @@ webhooks:
         path: /validate-devops-kubesphere-io-v1alpha1-s2ibuilder
     failurePolicy: Fail
     name: vs2ibuilder.kb.io
+    sideEffects: None
+    admissionReviewVersions: ["v1", "v1beta1"]
     rules:
       - apiGroups:
           - devops.kubesphere.io
@@ -63,6 +67,8 @@ webhooks:
         path: /validate-devops-kubesphere-io-v1alpha1-s2ibuildertemplate
     failurePolicy: Fail
     name: s2ibuildertemplate.kb.io
+    sideEffects: None
+    admissionReviewVersions: ["v1", "v1beta1"]
     rules:
       - apiGroups:
           - devops.kubesphere.io
@@ -81,6 +87,8 @@ webhooks:
         path: /validate-devops-kubesphere-io-v1alpha1-s2irun
     failurePolicy: Fail
     name: vs2irun.kb.io
+    sideEffects: None
+    admissionReviewVersions: ["v1", "v1beta1"]
     rules:
       - apiGroups:
           - devops.kubesphere.io
