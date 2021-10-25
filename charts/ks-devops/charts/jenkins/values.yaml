@@ -427,6 +427,12 @@ Agent:
     Golang:
       Image: builder-go
       Tag: v3.1.0
+    Python:
+      Image: builder-python
+      Tag: v3.1.0
+    Dotnet:
+      Image: builder-dotnet
+      Tag: v3.1.0
     ContainerRuntime: docker # Available values: docker, podman
 
 Persistence:
