@@ -427,6 +427,9 @@ Agent:
     Golang:
       Image: builder-go
       Tag: v3.1.0
+    golang16:
+      image: builder-go
+      tag: v3.2.0-alpha.01.16
     ContainerRuntime: docker # Available values: docker, podman
 
 Persistence:
