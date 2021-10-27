@@ -364,7 +364,7 @@ data:
                           ephemeral-storage: "10Gi"
                     securityContext:
                       fsGroup: 1000
- 
+
       securityRealm:
     {{- if eq .Values.securityRealm.type "ldap" }}
         ldap:
