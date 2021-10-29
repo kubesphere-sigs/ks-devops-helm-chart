@@ -368,7 +368,7 @@ Master:
   PodAnnotations: {}
 
   Ingress:
-    ApiVersion: networking.k8s.io/v1beta1
+    ApiVersion: networking.k8s.io/v1
     Annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
