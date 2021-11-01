@@ -432,10 +432,7 @@ Agent:
       tag: v3.2.0-alpha.01.16
     Python:
       Image: builder-python
-      Tag: v3.1.0
-    Dotnet:
-      Image: builder-dotnet
-      Tag: v3.1.0
+      Tag: v3.2.0
     ContainerRuntime: docker # Available values: docker, podman
 
 Persistence:
