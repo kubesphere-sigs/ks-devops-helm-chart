@@ -275,8 +275,11 @@ data:
                     hostPath: "/var/run/docker.sock"
                     mountPath: "/var/run/docker.sock"
                 - hostPathVolume:
-                    hostPath: "/var/data/jenkins_python_cache"
-                    mountPath: "/home/jenkins/python/app"
+                    hostPath: "/var/data/jenkins_python_pip_cache"
+                    mountPath: "/root/.cache/pip"
+                - hostPathVolume:
+                    hostPath: "/var/data/jenkins_python_pipenv_cache"
+                    mountPath: "/root/.local/share/virtualenvs"
                 - hostPathVolume:
                     hostPath: "/var/data/jenkins_sonar_cache"
                     mountPath: "/root/.sonar/cache"
