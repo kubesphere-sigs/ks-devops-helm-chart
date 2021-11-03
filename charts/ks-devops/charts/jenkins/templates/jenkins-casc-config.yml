@@ -243,6 +243,72 @@ data:
                     securityContext:
                       fsGroup: 1000
 
+              - name: "mavenjdk11"
+                namespace: "{{ .Values.Agent.WorkerNamespace }}"
+                label: "maven"
+                nodeUsageMode: "EXCLUSIVE"
+                idleMinutes: 0
+                containers:
+                - name: "maven"
+                  image: "{{ .Values.Agent.Builder.Registry }}/{{ .Values.Agent.Builder.MavenJdk11.Image }}:{{ .Values.Agent.Builder.MavenJdk11.Tag }}{{ template "jenkins.agent.variant" . }}"
+                  command: "cat"
+                  args: ""
+                  ttyEnabled: true
+                  privileged: {{ template "jenkins.agent.privileged" . }}
+                  resourceRequestCpu: "100m"
+                  resourceLimitCpu: "4000m"
+                  resourceRequestMemory: "100Mi"
+                  resourceLimitMemory: "8192Mi"
+                - name: "jnlp"
+                  image: "{{ .Values.Agent.Image }}:{{ .Values.Agent.ImageTag }}"
+                  command: "jenkins-slave"
+                  args: "^${computer.jnlpmac} ^${computer.name}"
+                  resourceRequestCpu: "50m"
+                  resourceLimitCpu: "500m"
+                  resourceRequestMemory: "400Mi"
+                  resourceLimitMemory: "1536Mi"
+                workspaceVolume:
+                  emptyDirWorkspaceVolume:
+                    memory: false
+                volumes:
+                - hostPathVolume:
+                    hostPath: "/var/run/docker.sock"
+                    mountPath: "/var/run/docker.sock"
+                - hostPathVolume:
+                    hostPath: "/var/data/jenkins_maven_cache"
+                    mountPath: "/root/.m2"
+                - hostPathVolume:
+                    hostPath: "/var/data/jenkins_sonar_cache"
+                    mountPath: "/root/.sonar/cache"
+                yaml: |
+                  spec:
+                    affinity:
+                      nodeAffinity:
+                        preferredDuringSchedulingIgnoredDuringExecution:
+                        - weight: 1
+                          preference:
+                            matchExpressions:
+                            - key: node-role.kubernetes.io/worker
+                              operator: In
+                              values:
+                              - ci
+                    tolerations:
+                    - key: "node.kubernetes.io/ci"
+                      operator: "Exists"
+                      effect: "NoSchedule"
+                    - key: "node.kubernetes.io/ci"
+                      operator: "Exists"
+                      effect: "PreferNoSchedule"
+                    containers:
+                    - name: "maven"
+                      resources:
+                        requests:
+                          ephemeral-storage: "1Gi"
+                        limits:
+                          ephemeral-storage: "10Gi"
+                    securityContext:
+                      fsGroup: 1000
+
       securityRealm:
     {{- if eq .Values.securityRealm.type "ldap" }}
         ldap:

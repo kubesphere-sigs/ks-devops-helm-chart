@@ -430,6 +430,9 @@ Agent:
     golang16:
       image: builder-go
       tag: v3.2.0-1.16
+    MavenJdk11:
+      image: builder-maven
+      tag: v3.2.0jdk11
     ContainerRuntime: docker # Available values: docker, podman
 
 Persistence:
