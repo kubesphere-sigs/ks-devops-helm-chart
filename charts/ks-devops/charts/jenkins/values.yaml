@@ -431,8 +431,8 @@ Agent:
       image: builder-go
       tag: v3.2.0-1.16
     python:
-      Image: builder-python
-      Tag: v3.2.0
+      image: builder-python
+      tag: v3.2.0
     ContainerRuntime: docker # Available values: docker, podman
 
 Persistence:
