@@ -10,7 +10,7 @@ image:
 binary:
   image:
     name: "s2i-binary"
-    tag: "v2.1.0"
+    tag: "v3.2.0"
 
 # Java image
 java8CentOs7:
@@ -30,39 +30,39 @@ java11CentOs7:
 java11Runtime:
   image:
     name: "java-11-runtime"
-    tag: "v2.1.0"
+    tag: "v3.2.0"
 
 # Nodejs image
 nodejs8CentOs7:
   image:
     name: "nodejs-8-centos7"
-    tag: "v2.1.0"
+    tag: "v3.2.0"
 nodejs6CentOs7:
   image:
     name: "nodejs-6-centos7"
-    tag: "v2.1.0"
+    tag: "v3.2.0"
 nodejs4CentOs7:
   image:
     name: "nodejs-4-centos7"
-    tag: "v2.1.0"
+    tag: "v3.2.0"
 
 # Python image
 python36CentOs7:
   image:
     name: "python-36-centos7"
-    tag: "v2.1.0"
+    tag: "v3.2.0"
 python35CentOs7:
   image:
     name: "python-35-centos7"
-    tag: "v2.1.0"
+    tag: "v3.2.0"
 python34CentOs7:
   image:
     name: "python-34-centos7"
-    tag: "v2.1.0"
+    tag: "v3.2.0"
 python27CentOs7:
   image:
-    name: "python-34-centos7"
-    tag: "v2.1.0"
+    name: "python-27-centos7"
+    tag: "v3.2.0"
 
 # Tomcat image
 tomcat85Java11:
@@ -72,7 +72,7 @@ tomcat85Java11:
 tomcat85Java11Runtime:
   image:
     name: "tomcat85-java11-runtime"
-    tag: "v2.1.0"
+    tag: "v3.2.0"
 tomcat85Java8:
   image:
     name: "tomcat85-java8-centos7"
@@ -80,7 +80,7 @@ tomcat85Java8:
 tomcat85Java8Runtime:
   image:
     name: "tomcat85-java8-runtime"
-    tag: "v2.1.0"
+    tag: "v3.2.0"
 
 s2irun:
   image:

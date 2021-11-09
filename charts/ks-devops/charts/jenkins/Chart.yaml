@@ -13,4 +13,4 @@ name: jenkins
 sources:
 - https://github.com/jenkinsci/jenkins
 - https://github.com/jenkinsci/docker-jnlp-slave
-version: 0.19.2
+version: 0.19.3
