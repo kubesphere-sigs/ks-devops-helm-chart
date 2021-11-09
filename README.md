@@ -1,6 +1,7 @@
 # ks-devops-helm-chart
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+![GitHub All Releases](https://img.shields.io/github/downloads/kubesphere-sigs/ks-devops-helm-chart/total)
 
 KubeSphere official helm chart for [KubeSphere DevOps](https://github.com/kubesphere/ks-devops).
 
