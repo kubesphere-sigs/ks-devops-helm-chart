@@ -155,7 +155,7 @@ data:
                           ephemeral-storage: "10Gi"
                     securityContext:
                       fsGroup: 1000
-                
+
               - name: "maven"
                 namespace: "{{ .Values.Agent.WorkerNamespace }}"
                 label: "maven"
@@ -232,7 +232,7 @@ data:
                             path: settings.xml
                     securityContext:
                       fsGroup: 1000
-                  
+
               - name: "go"
                 namespace: "{{ .Values.Agent.WorkerNamespace }}"
                 label: "go"
@@ -305,6 +305,75 @@ data:
                 containers:
                 - name: "go"
                   image: "{{ .Values.Agent.Builder.Registry }}/{{ .Values.Agent.Builder.golang16.image }}:{{ .Values.Agent.Builder.golang16.tag }}{{ template "jenkins.agent.variant" . }}"
+
+              - name: "python"
+                namespace: "{{ .Values.Agent.WorkerNamespace }}"
+                label: "python"
+                nodeUsageMode: "EXCLUSIVE"
+                idleMinutes: 0
+                containers:
+                - name: "python"
+                  image: "{{ .Values.Agent.Builder.Registry }}/{{ .Values.Agent.Builder.python.Image }}:{{ .Values.Agent.Builder.python.Tag }}{{ template "jenkins.agent.variant" . }}"
+                  command: "cat"
+                  args: ""
+                  ttyEnabled: true
+                  privileged: {{ template "jenkins.agent.privileged" . }}
+                  resourceRequestCpu: "100m"
+                  resourceLimitCpu: "4000m"
+                  resourceRequestMemory: "100Mi"
+                  resourceLimitMemory: "8192Mi"
+                - name: "jnlp"
+                  image: "{{ .Values.Agent.Image }}:{{ .Values.Agent.ImageTag }}"
+                  command: "jenkins-slave"
+                  args: "^${computer.jnlpmac} ^${computer.name}"
+                  resourceRequestCpu: "50m"
+                  resourceLimitCpu: "500m"
+                  resourceRequestMemory: "400Mi"
+                  resourceLimitMemory: "1536Mi"
+                workspaceVolume:
+                  emptyDirWorkspaceVolume:
+                    memory: false
+                volumes:
+                - hostPathVolume:
+                    hostPath: "/var/run/docker.sock"
+                    mountPath: "/var/run/docker.sock"
+                - hostPathVolume:
+                    hostPath: "/var/data/jenkins_python_pip_cache"
+                    mountPath: "/root/.cache/pip"
+                - hostPathVolume:
+                    hostPath: "/var/data/jenkins_python_pipenv_cache"
+                    mountPath: "/root/.local/share/virtualenvs"
+                - hostPathVolume:
+                    hostPath: "/var/data/jenkins_sonar_cache"
+                    mountPath: "/root/.sonar/cache"
+                yaml: |
+                  spec:
+                    affinity:
+                      nodeAffinity:
+                        preferredDuringSchedulingIgnoredDuringExecution:
+                        - weight: 1
+                          preference:
+                            matchExpressions:
+                            - key: node-role.kubernetes.io/worker
+                              operator: In
+                              values:
+                              - ci
+                    tolerations:
+                    - key: "node.kubernetes.io/ci"
+                      operator: "Exists"
+                      effect: "NoSchedule"
+                    - key: "node.kubernetes.io/ci"
+                      operator: "Exists"
+                      effect: "PreferNoSchedule"
+                    containers:
+                    - name: "python"
+                      resources:
+                        requests:
+                          ephemeral-storage: "1Gi"
+                        limits:
+                          ephemeral-storage: "10Gi"
+                    securityContext:
+                      fsGroup: 1000
 
       securityRealm:
     {{- if eq .Values.securityRealm.type "ldap" }}
