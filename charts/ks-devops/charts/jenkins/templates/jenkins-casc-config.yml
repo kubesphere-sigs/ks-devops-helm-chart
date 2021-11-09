@@ -245,7 +245,7 @@ data:
 
               - name: "mavenjdk11"
                 namespace: "{{ .Values.Agent.WorkerNamespace }}"
-                label: "maven"
+                label: "jdk11"
                 nodeUsageMode: "EXCLUSIVE"
                 idleMinutes: 0
                 containers:
