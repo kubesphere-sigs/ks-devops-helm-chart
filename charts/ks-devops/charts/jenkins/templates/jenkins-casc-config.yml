@@ -243,14 +243,14 @@ data:
                     securityContext:
                       fsGroup: 1000
 
-              - name: "jdk11"
+              - name: "mavenjdk11"
                 namespace: "{{ .Values.Agent.WorkerNamespace }}"
                 label: "maven"
                 nodeUsageMode: "EXCLUSIVE"
                 idleMinutes: 0
                 containers:
                 - name: "maven"
-                  image: "{{ .Values.Agent.Builder.Registry }}/{{ .Values.Agent.Builder.jdk11.Image }}:{{ .Values.Agent.Builder.jdk11.Tag }}{{ template "jenkins.agent.variant" . }}"
+                  image: "{{ .Values.Agent.Builder.Registry }}/{{ .Values.Agent.Builder.mavenJDK11.Image }}:{{ .Values.Agent.Builder.mavenJDK11.Tag }}{{ template "jenkins.agent.variant" . }}"
                   command: "cat"
                   args: ""
                   ttyEnabled: true
