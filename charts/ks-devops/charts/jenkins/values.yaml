@@ -430,6 +430,9 @@ Agent:
     golang16:
       image: builder-go
       tag: v3.2.0-1.16
+    python:
+      image: builder-python
+      tag: v3.2.0
     mavenJDK11:
       image: builder-maven
       tag: v3.2.0jdk11
