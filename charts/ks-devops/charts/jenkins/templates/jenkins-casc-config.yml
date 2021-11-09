@@ -238,7 +238,7 @@ data:
                 inheritFrom: "maven"
                 containers:
                 - name: "maven"
-                  image: "{{ .Values.Agent.Builder.Registry }}/{{ .Values.Agent.Builder.mavenjdk11.image }}:{{ .Values.Agent.Builder.mavenjdk11.tag }}{{ template "jenkins.agent.variant" . }}"
+                  image: "{{ .Values.Agent.Builder.Registry }}/{{ .Values.Agent.Builder.mavenJDK11.image }}:{{ .Values.Agent.Builder.mavenJDK11.tag }}{{ template "jenkins.agent.variant" . }}"
 
               - name: "go"
                 namespace: "{{ .Values.Agent.WorkerNamespace }}"
