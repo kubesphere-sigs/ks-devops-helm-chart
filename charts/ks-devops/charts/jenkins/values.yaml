@@ -25,8 +25,8 @@ Master:
 
   UsePodSecurityContext: true
   JavaOpts: |-
-    -Xms512m
-    -Xmx512m
+    -Xms1200m
+    -Xmx1600m
     -XX:MaxRAM=2g
     -Dhudson.slaves.NodeProvisioner.initialDelay=20
     -Dhudson.slaves.NodeProvisioner.MARGIN=50
