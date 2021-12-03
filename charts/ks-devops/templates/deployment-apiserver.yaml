@@ -33,6 +33,17 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
+        - name: "migrate-config"
+          image: "{{ .Values.image.registry }}/{{ .Values.image.tools.repository }}:{{ .Values.image.tools.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+            - ks
+            - option
+            - migrate
+            - --service
+            - "{{ include "ks-devops.apiserver-fullname" . }}.{{ .Release.Namespace }}:9090"
+            - --namespace
+            - {{ .Release.Namespace }}
         - name: "init-config"
           image: "{{ .Values.image.registry }}/{{ .Values.image.tools.repository }}:{{ .Values.image.tools.tag | default .Chart.AppVersion }}"
           command:
