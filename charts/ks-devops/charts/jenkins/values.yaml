@@ -8,7 +8,7 @@ Master:
     SchedulerName: ""
   Name: jenkins-master
   Image: "kubespheredev/ks-jenkins"
-  ImageTag: "v3.2.0-2.249.1"
+  ImageTag: "master"
   ImagePullPolicy: "IfNotPresent"
   Component: "jenkins-master"
   UseSecurity: true
