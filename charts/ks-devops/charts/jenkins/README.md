@@ -303,3 +303,18 @@ Master:
     -Dhttps.proxyHost=192.168.64.1
     -Dhttps.proxyPort=3128
 ```
+
+## JVM troubleshooting
+
+You can add the following JVM parameters to the Jenkins if you want to get some troubleshooting information:
+
+```shell
+-verbose:gc
+-Xloggc:/var/jenkins_home/gc-%t.log
+-Xlog:gc
+-Xlog:gc*
+-Xlog:gc+heap=trace
+-Xlog:age*=trace
+-Xlog:ref*=debug
+-Xlog:ergo*=trace
+```

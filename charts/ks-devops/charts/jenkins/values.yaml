@@ -36,14 +36,7 @@ Master:
     -Dhudson.slaves.NodeProvisioner.recurrencePeriod=5000
     -Dhudson.security.csrf.DefaultCrumbIssuer.EXCLUDE_SESSION_ID=true
     -Dio.jenkins.plugins.casc.ConfigurationAsCode.initialDelay=10000
-    -verbose:gc
-    -Xloggc:/var/jenkins_home/gc-%t.log
-    -Xlog:gc
-    -Xlog:gc*
-    -Xlog:gc+heap=trace
-    -Xlog:age*=trace
-    -Xlog:ref*=debug
-    -Xlog:ergo*=trace
+    -Djenkins.install.runSetupWizard=false
     -XX:+UseG1GC
     -XX:+UseStringDeduplication
     -XX:+ParallelRefProcEnabled
