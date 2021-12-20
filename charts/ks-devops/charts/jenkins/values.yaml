@@ -421,6 +421,9 @@ Agent:
     python:
       image: builder-python
       tag: v3.2.0
+    mavenJDK11:
+      image: builder-maven
+      tag: v3.2.0jdk11
     ContainerRuntime: docker # Available values: docker, podman
 
 Persistence:

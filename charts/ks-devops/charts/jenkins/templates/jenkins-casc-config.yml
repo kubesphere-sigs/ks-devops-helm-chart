@@ -230,6 +230,13 @@ data:
                     securityContext:
                       fsGroup: 1000
 
+              - name: "mavenjdk11"
+                label: "jdk11 maven java"
+                inheritFrom: "maven"
+                containers:
+                - name: "maven"
+                  image: "{{ .Values.Agent.Builder.Registry }}/{{ .Values.Agent.Builder.mavenJDK11.image }}:{{ .Values.Agent.Builder.mavenJDK11.tag }}{{ template "jenkins.agent.variant" . }}"
+
               - name: "go"
                 namespace: "{{ .Values.Agent.WorkerNamespace }}"
                 label: "go"
