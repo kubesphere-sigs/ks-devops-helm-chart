@@ -368,10 +368,10 @@ Master:
 
 Agent:
   Enabled: true
-  Image: jenkins/jnlp-slave
-  ImageTag: 3.27-1
+  Image: jenkins/inbound-agent
+  ImageTag: 4.10-2
   CustomJenkinsLabels: []
-  Component: "jenkins-slave"
+  Component: "jenkins-inbound-agent"
   Privileged: false
   WorkerNamespace: kubesphere-devops-worker
   ResourceQuota:
@@ -385,7 +385,7 @@ Agent:
       memory: "256Mi"
   # You may want to change this to true while testing a new image
   AlwaysPullImage: false
-  # Controls how slave pods are retained after the Jenkins build completes
+  # Controls how agent pods are retained after the Jenkins build completes
   # Possible values: Always, Never, OnFailure
   PodRetention: Never
   # You can define the volumes that you want to mount for this container
