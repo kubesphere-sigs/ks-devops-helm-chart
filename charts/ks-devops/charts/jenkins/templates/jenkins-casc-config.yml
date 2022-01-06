@@ -6,7 +6,7 @@ data:
   jenkins.yaml: |
     jenkins:
       mode: EXCLUSIVE
-      numExecutors: 5
+      numExecutors: 0
       scmCheckoutRetryCount: 2
       disableRememberMe: true
 
