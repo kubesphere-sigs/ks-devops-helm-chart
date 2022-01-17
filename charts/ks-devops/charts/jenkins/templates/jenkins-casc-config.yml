@@ -413,6 +413,8 @@ data:
         server: "http://{{ include "ks-devops.apiserver-fullname" . }}.{{ .Release.Namespace }}:9090/"
         {{- end }}
         {{- end }}
+      eventDispatcher:
+        receiver: "http://{{ include "ks-devops.apiserver-fullname" . }}.{{ .Release.Namespace }}:9090/v1alpha3/webhooks/jenkins"
       gitLabServers:
         servers:
         - name: "https://gitlab.com"
