@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 crds=("devops.kubesphere.io_devopsprojects.yaml devops.kubesphere.io_pipelines.yaml devops.kubesphere.io_pipelineruns.yaml devops.kubesphere.io_templates.yaml")
 for crd in $crds
