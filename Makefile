@@ -1,6 +1,9 @@
 lint-chart:
 	helm lint charts/ks-devops
 
+remove-crds:
+	kubectl delete -f charts/ks-devops/crds
+
 install-chart: lint-chart
 	helm install ks-devops charts/ks-devops -n kubesphere-devops-system --create-namespace \
 		 --set image.pullPolicy=Always --set jenkins.ksAuth.enabled=true
@@ -28,6 +31,17 @@ reinstall-jenkins-chart:
 
 package-chart:
 	cd charts && helm package ks-devops
+
+load-images-to-k3d:
+	docker pull ghcr.io/kubesphere/devops-tools:master
+	docker pull ghcr.io/kubesphere/devops-apiserver:master
+	docker pull ghcr.io/kubesphere/devops-controller:master
+	docker pull kubespheredev/ks-jenkins:master
+
+	k3d image import ghcr.io/kubesphere/devops-tools:master
+	k3d image import ghcr.io/kubesphere/devops-apiserver:master
+	k3d image import ghcr.io/kubesphere/devops-controller:master
+	k3d image import kubespheredev/ks-jenkins:master
 
 fetch-crds:
 	./hack/fetch-crds.sh
