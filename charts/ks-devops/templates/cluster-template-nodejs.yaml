@@ -1,0 +1,87 @@
+apiVersion: devops.kubesphere.io/v1alpha3
+kind: ClusterTemplate
+metadata:
+  name: nodejs
+  annotations:
+    devops.kubesphere.io/displayNameEN: &defaultDisplayName "NodeJS"
+    devops.kubesphere.io/displayNameZH: "NodeJS"
+    devops.kubesphere.io/descriptionEN: &defaultDescription "Continuous integration for most NodeJS projects. Mainly include: dependency download, test, build and artifact archive."
+    devops.kubesphere.io/descriptionZH: "适用于大多数 NodeJS 项目的持续集成。主要包括：依赖下载，测试，构建和制品上传。"
+    devops.kubesphere.io/displayName: *defaultDisplayName
+    devops.kubesphere.io/description: *defaultDescription
+  labels:
+    devops.kubesphere.io/offcial: "true"
+spec:
+  parameters:
+    - name: CloneURL
+      description: The URL you want to clone.
+      required: true
+      default: https://github.com/johnniang/vue-sample
+    - name: CloneRevision
+      description: Which revision you want to checkout from.
+      required: true
+      default: main
+    - name: NodeDockerImage
+      description: Docker image of node. Refer to https://hub.docker.com/_/node.
+      default: "node:14.19.0"
+      required: true
+  template: |
+    pipeline {
+      agent {
+        kubernetes {
+          inheritFrom 'nodejs base'
+          containerTemplate {
+            name 'nodejs'
+            image 'node:14.19.0'
+          }
+        }
+
+      }
+      stages {
+        stage('Clone repository') {
+          agent none
+          steps {
+            checkout([$class: 'GitSCM', branches: [[name: '{{.params.CloneRevision}}']], 
+                extensions: [[$class: 'CloneOption', depth: 1, shallow: true]], userRemoteConfigs: [[url: '{{.params.CloneURL}}']]
+            ])
+          }
+        }
+
+        stage('Run npm install') {
+          steps {
+            container('nodejs') {
+              sh 'npm install'
+            }
+          }
+        }
+
+        stage('Run test') {
+          steps {
+            container('nodejs') {
+              sh 'npm run test'
+            }
+
+          }
+        }
+
+        stage('Run build') {
+          steps {
+            container('nodejs') {
+              sh 'npm run build'
+            }
+
+          }
+        }
+
+        stage('Archive artifacts') {
+          steps {
+            container('base') {
+              sh 'zip -r dist.zip dist/'
+            }
+            archiveArtifacts 'dist.zip'
+          }
+        }
+
+      }
+    }
+    
