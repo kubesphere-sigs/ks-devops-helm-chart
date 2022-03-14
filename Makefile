@@ -45,3 +45,5 @@ load-images-to-k3d:
 
 fetch-crds:
 	./hack/fetch-crds.sh
+fetch-templates:
+	./hack/fetch-templates.sh
