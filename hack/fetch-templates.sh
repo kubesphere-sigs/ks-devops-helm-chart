@@ -8,6 +8,6 @@ git clone --depth 1 https://ghproxy.com/https://github.com/kubesphere-sigs/pipel
 for template in $(find $temp_dir/featured -type f \( -name "*.yml" -o -name "*.yaml" \) -print)
 do
   echo "Copying $template into $target_dir"
-  cp $template $target_dir
+  cp $template "$target_dir/cluster-template-$(basename $template)"
 done
 rm $temp_dir -rf

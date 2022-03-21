@@ -10,14 +10,14 @@ metadata:
     devops.kubesphere.io/icon: "golang.svg"
 spec:
   parameters:
-    - name: CloneURL
+    - name: GitRepository
       description: The URL you want to clone
       required: true
-      default: https://github.com/johnniang/go-sample
-    - name: CloneRevision
+      default: https://github.com/kubesphere-sigs/demo-go-http
+    - name: GitRevision
       description: Which revision you want to checkout from
       required: true
-      default: main
+      default: master
     - name: GolangDockerImage
       description: Docker image of Golang. Refer to https://hub.docker.com/_/golang
       default: "golang:1.17"
@@ -32,10 +32,10 @@ spec:
       required: true
     - name: BuildScript
       description: Shell script for building.
-      default: "go build -o service ./..."
+      default: "go build -o service main.go"
       required: true
     - name: ArtifactsLocation
-      description: Artifacts location. e.g. service or dist/.
+      description: Artifacts location. e.g. service or build/.
       default: "service"
       required: true
 
@@ -53,8 +53,8 @@ spec:
       stages {
         stage('Clone repository') {
           steps {
-            checkout([$class: 'GitSCM', branches: [[name: '$(.params.CloneRevision)']], 
-                extensions: [[$class: 'CloneOption', depth: 1, shallow: true]], userRemoteConfigs: [[url: '$(.params.CloneURL)']]
+            checkout([$class: 'GitSCM', branches: [[name: '$(.params.GitRevision)']], 
+                extensions: [[$class: 'CloneOption', depth: 1, shallow: true]], userRemoteConfigs: [[url: '$(.params.GitRepository)']]
             ])
           }
         }

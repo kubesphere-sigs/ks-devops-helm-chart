@@ -3,14 +3,11 @@ kind: ClusterTemplate
 metadata:
   name: cicd
   annotations:
-    devops.kubesphere.io/displayNameEN: &defaultDisplayName "Continuous Integration & Delivery (CI/CD)"
+    devops.kubesphere.io/displayNameEN: "Continuous Integration & Delivery (CI/CD)"
     devops.kubesphere.io/displayNameZH: "持续集成&交付 (CI/CD)"
-    devops.kubesphere.io/descriptionEN: &defaultDescription "Continuous deployment (CD) refers to the idea of automatically providing the release version in the continuous delivery pipeline to end users. According to the user\'s installation method, automatic deployment in the cloud environment, app upgrades (such as apps on mobile phones), website updates, or only the list of available versions."
-    devops.kubesphere.io/descriptionZH: "持续部署（CD）是指能够自动提供持续交付管道中发布版本给最终用户使用的想法。根据用户的安装方式，在云环境中自动部署、app 升级（如手机上的应用程序）、更新网站或只更新可用版本列表。"
-    devops.kubesphere.io/displayName: *defaultDisplayName
-    devops.kubesphere.io/description: *defaultDescription
-  labels:
-    devops.kubesphere.io/offcial: "true"
+    devops.kubesphere.io/descriptionEN: "[Deprecated] Continuous deployment (CD) refers to the idea of automatically providing the release version in the continuous delivery pipeline to end users. According to the user\'s installation method, automatic deployment in the cloud environment, app upgrades (such as apps on mobile phones), website updates, or only the list of available versions."
+    devops.kubesphere.io/descriptionZH: "【已弃用】持续部署（CD）是指能够自动提供持续交付管道中发布版本给最终用户使用的想法。根据用户的安装方式，在云环境中自动部署、app 升级（如手机上的应用程序）、更新网站或只更新可用版本列表。"
+    devops.kubesphere.io/icon: "cicd-temple-en.svg"
 spec:
   template: |
     pipeline {
