@@ -10,14 +10,14 @@ metadata:
     devops.kubesphere.io/icon: "nodejs.svg"
 spec:
   parameters:
-    - name: CloneURL
+    - name: GitURL
       description: The URL you want to clone.
       required: true
-      default: https://github.com/johnniang/vue-sample
-    - name: CloneRevision
+      default: https://github.com/kubesphere-sigs/demo-javascript
+    - name: GitRevision
       description: Which revision you want to checkout from.
       required: true
-      default: main
+      default: master
     - name: NodeDockerImage
       description: Docker image of node. Refer to https://hub.docker.com/_/node.
       default: "node:14.19.0"
@@ -53,8 +53,8 @@ spec:
         stage('Clone repository') {
           agent none
           steps {
-            checkout([$class: 'GitSCM', branches: [[name: '$(.params.CloneRevision)']], 
-                extensions: [[$class: 'CloneOption', depth: 1, shallow: true]], userRemoteConfigs: [[url: '$(.params.CloneURL)']]
+            checkout([$class: 'GitSCM', branches: [[name: '$(.params.GitRevision)']], 
+                extensions: [[$class: 'CloneOption', depth: 1, shallow: true]], userRemoteConfigs: [[url: '$(.params.GitURL)']]
             ])
           }
         }
