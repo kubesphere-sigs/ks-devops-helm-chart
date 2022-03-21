@@ -6,7 +6,7 @@ metadata:
     devops.kubesphere.io/displayNameEN: &defaultDisplayName "Continuous Integration (CI)"
     devops.kubesphere.io/displayNameZH: "持续集成 (CI)"
     devops.kubesphere.io/descriptionEN: &defaultDescription "[Deprecated] Continuous integration (CI) is the process of automatically detecting, pulling, building, and (in most cases) unit testing after source code changes."
-    devops.kubesphere.io/descriptionZH: "【已过期】持续集成（CI）是在源代码变更后自动检测、拉取、构建和（在大多数情况下）进行单元测试的过程。"
+    devops.kubesphere.io/descriptionZH: "【已弃用】持续集成（CI）是在源代码变更后自动检测、拉取、构建和（在大多数情况下）进行单元测试的过程。"
     devops.kubesphere.io/icon: "ci-temple-en.svg"
 spec:
   template: |
