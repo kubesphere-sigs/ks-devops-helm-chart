@@ -20,6 +20,20 @@ you can then do
 
 ```bash
 helm search repo ks-devops
+helm install devops ks-devops/ks-devops --namespace kubesphere-devops-system --create-namespace
+```
+
+## Argo CD support
+Install it via the following instructions:
+
+```shell
+helm repo add argo https://argoproj.github.io/argo-helm
+helm install argocd --version 4.4.0 argo/argo-cd --namespace argocd --create-namespace
+```
+
+or, you could use the following instrctions to unintall it:
+```shell
+helm uninstall --namespace argocd argocd
 ```
 
 ## Configuration

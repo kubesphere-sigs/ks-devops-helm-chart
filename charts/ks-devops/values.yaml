@@ -95,3 +95,7 @@ s2i:
 
 jenkins:
   enabled: true
+
+argocd:
+  enabled: true
+  namespace: argocd

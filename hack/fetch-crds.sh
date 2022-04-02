@@ -1,6 +1,6 @@
 #!/bin/bash
 
-crds=("devops.kubesphere.io_devopsprojects.yaml devops.kubesphere.io_pipelines.yaml devops.kubesphere.io_pipelineruns.yaml devops.kubesphere.io_templates.yaml devops.kubesphere.io_clustertemplates.yaml gitops.kubesphere.io_applications.yaml")
+crds=("devops.kubesphere.io_devopsprojects.yaml devops.kubesphere.io_pipelines.yaml devops.kubesphere.io_pipelineruns.yaml devops.kubesphere.io_templates.yaml devops.kubesphere.io_clustertemplates.yaml gitops.kubesphere.io_applications.yaml devops.kubesphere.io_gitrepositories.yaml")
 for crd in $crds
 do
     curl -sSL -o charts/ks-devops/crds/$crd https://ghproxy.com/https://raw.githubusercontent.com/kubesphere/ks-devops/master/config/crd/bases/$crd
