@@ -58,6 +58,10 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.registry }}/{{ .Values.image.apiserver.repository }}:{{ .Values.image.apiserver.tag | default .Chart.AppVersion }}"
+          {{- if .Values.argocd.enabled }}
+          args:
+          - --argocd-namespace={{ .Values.argocd.namespace }}
+          {{- end}}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: 9090

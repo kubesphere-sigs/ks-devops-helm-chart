@@ -47,6 +47,12 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.registry }}/{{ .Values.image.controller.repository }}:{{ .Values.image.controller.tag | default .Chart.AppVersion }}"
+          {{- if .Values.argocd.enabled }}
+          args:
+          - --enabled-controllers
+          - argocd=true
+          - --argocd-namespace={{ .Values.argocd.namespace }}
+          {{- end}}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
