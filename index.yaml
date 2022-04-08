@@ -3,6 +3,25 @@ entries:
   ks-devops:
   - apiVersion: v2
     appVersion: v3.2.1
+    created: "2022-04-08T07:25:01.571262154Z"
+    dependencies:
+    - condition: jenkins.enabled
+      name: jenkins
+      repository: ""
+      version: 0.19.3
+    - condition: s2i.enabled
+      name: s2i
+      repository: ""
+      version: 1.16.3
+    description: A Helm chart for KubeSphere DevOps
+    digest: d0cb1b9591347cbb5a3e736fcf04cb29793bd3ef2aa7bc768acb2c8a7b1a8a46
+    name: ks-devops
+    type: application
+    urls:
+    - https://github.com/kubesphere-sigs/ks-devops-helm-chart/releases/download/ks-devops-0.1.11/ks-devops-0.1.11.tgz
+    version: 0.1.11
+  - apiVersion: v2
+    appVersion: v3.2.1
     created: "2022-04-02T09:55:47.109825828Z"
     dependencies:
     - condition: jenkins.enabled
@@ -267,4 +286,4 @@ entries:
     urls:
     - https://github.com/kubesphere-sigs/ks-devops-helm-chart/releases/download/ks-devops-0.0.1/ks-devops-0.0.1.tgz
     version: 0.0.1
-generated: "2022-04-02T09:55:47.109901328Z"
+generated: "2022-04-08T07:25:01.571361054Z"
