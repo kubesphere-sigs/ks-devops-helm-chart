@@ -405,7 +405,7 @@ Agent:
     Registry: "docker.io/kubespheredev"
     Base:
       Image: builder-base
-      Tag: v3.2.0
+      Tag: v3.2.1
     NodeJs:
       Image: builder-nodejs
       Tag: v3.2.0
@@ -417,13 +417,19 @@ Agent:
       Tag: v3.2.0
     golang16:
       image: builder-go
-      tag: v3.2.0-1.16
+      tag: v3.2.1-1.16
+    golang17:
+      image: builder-go
+      tag: v3.2.1-1.17
+    golang18:
+      image: builder-go
+      tag: v3.2.1-1.18
     python:
       image: builder-python
       tag: v3.2.0
     mavenJDK11:
       image: builder-maven
-      tag: v3.2.0jdk11
+      tag: v3.2.1-jdk11
     ContainerRuntime: docker # Available values: docker, podman
 
 Persistence:
