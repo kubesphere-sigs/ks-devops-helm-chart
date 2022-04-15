@@ -20,3 +20,6 @@ jobs:
       - name: Run chart-releaser
         run: |
           make lint-chart
+      - name: Verify Images
+        run: |
+          helm template charts/ks-devops  | grep image: | awk '{print $2}' | xargs -n 1 docker pull
