@@ -1,0 +1,8 @@
+tasks:
+  - init: |
+      [[ ! -z "${DOCKER_USER}" && ! -z "${DOCKER_PASSWD}" ]] && docker login -u${DOCKER_USER} -p${DOCKER_PASSWD}
+      [[ ! -z "${GITHUB_USER}" && ! -z "${GITHUB_TOKEN}" ]] && docker login ghcr.io/linuxsuren -u${GITHUB_USER} -p${GITHUB_TOKEN}
+      git config --global user.name $GIT_AUTHOR_NAME
+      git config --global user.email $GIT_COMMITTER_EMAIL
+      curl -L https://github.com/linuxsuren/http-downloader/releases/latest/download/hd-linux-amd64.tar.gz | tar xzv hd
+      sudo mv hd /usr/bin/hd
