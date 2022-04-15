@@ -24,7 +24,7 @@ appVersion: v3.2.1
 
 dependencies:
   - name: jenkins
-    version: 0.19.3
+    version: 0.19.4
     condition: jenkins.enabled
   - name: s2i
     version: 1.16.3

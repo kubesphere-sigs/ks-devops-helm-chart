@@ -308,6 +308,18 @@ data:
                 containers:
                 - name: "go"
                   image: "{{ .Values.Agent.Builder.Registry }}/{{ .Values.Agent.Builder.golang16.image }}:{{ .Values.Agent.Builder.golang16.tag }}{{ template "jenkins.agent.variant" . }}"
+              - name: "go17"
+                label: "go17"
+                inheritFrom: "go"
+                containers:
+                - name: "go"
+                  image: "{{ .Values.Agent.Builder.Registry }}/{{ .Values.Agent.Builder.golang17.image }}:{{ .Values.Agent.Builder.golang17.tag }}{{ template "jenkins.agent.variant" . }}"
+              - name: "go18"
+                label: "go18"
+                inheritFrom: "go"
+                containers:
+                - name: "go"
+                  image: "{{ .Values.Agent.Builder.Registry }}/{{ .Values.Agent.Builder.golang18.image }}:{{ .Values.Agent.Builder.golang18.tag }}{{ template "jenkins.agent.variant" . }}"
 
               - name: "python"
                 namespace: "{{ .Values.Agent.WorkerNamespace }}"
