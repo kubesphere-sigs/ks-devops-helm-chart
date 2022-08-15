@@ -151,10 +151,13 @@ spec:
             timeoutSeconds: 5
             failureThreshold: {{ .Values.Master.HealthProbeLivenessFailureThreshold }}
           readinessProbe:
+            failureThreshold: {{ .Values.Master.HealthProbesReadinessFailureThreshold }}
             httpGet:
               path: "{{ default "" .Values.Master.JenkinsUriPrefix }}/login"
               port: http
             initialDelaySeconds: {{ .Values.Master.HealthProbesReadinessTimeout }}
+            periodSeconds: {{ .Values.Master.HealthProbesReadinessPeriodSeconds }}
+            timeoutSeconds: {{ .Values.Master.HealthProbesReadinessTimeoutSeconds }}
 {{- end }}
           # Resources configuration is a little hacky. This was to prevent breaking
           # changes, and should be cleanned up in the future once everybody had

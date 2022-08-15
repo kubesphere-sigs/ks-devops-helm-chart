@@ -60,8 +60,11 @@ Master:
 
   HealthProbes: true
   HealthProbesLivenessTimeout: 90
-  HealthProbesReadinessTimeout: 60
   HealthProbeLivenessFailureThreshold: 12
+  HealthProbesReadinessTimeout: 38
+  HealthProbesReadinessFailureThreshold: 12
+  HealthProbesReadinessPeriodSeconds: 2
+  HealthProbesReadinessTimeoutSeconds: 2
   SlaveListenerPort: 50000
   DisabledAgentProtocols:
     - JNLP-connect
