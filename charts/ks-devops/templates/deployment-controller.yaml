@@ -52,6 +52,7 @@ spec:
           - --enabled-controllers
           - argocd=true
           - --argocd-namespace={{ .Values.argocd.namespace }}
+          - --pipelinerun-data-store=configmap
           {{- end}}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           resources:
