@@ -19,7 +19,7 @@ data:
             credentialsId: "k8s-service-account"
             jenkinsUrl: "http://{{template "jenkins.fullname" . }}.{{ .Release.Namespace }}:80"
             jenkinsTunnel: "{{ template "jenkins.fullname" . }}-agent.{{ .Release.Namespace }}:50000"
-            containerCapStr: "2"
+            containerCapStr: "10"
             connectTimeout: "60"
             readTimeout: "60"
             maxRequestsPerHostStr: "32"
