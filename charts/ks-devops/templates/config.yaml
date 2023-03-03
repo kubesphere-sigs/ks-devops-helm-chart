@@ -30,9 +30,9 @@ data:
       password: 119d76305a05e7a2a65d096f71feb77921
       maxConnections: 100
       namespace: {{ .Release.Namespace }}
-    {{if .Values.jenkins.enabled}}
+    {{ if .Values.jenkins.enabled }}
       workerNamespace: {{ .Values.jenkins.Agent.WorkerNamespace }}
-    {{end}}
+    {{ end }}
 kind: ConfigMap
 metadata:
   name: devops-config
