@@ -81,7 +81,7 @@ spec:
         }
         stage('Archive artifacts') {
           steps {
-            archiveArtifacts '$(.params.ArtifactsLocation)'
+            archiveArtifacts(artifacts: '$(.params.ArtifactsLocation)', followSymlinks: false)
           }
         }
       }
