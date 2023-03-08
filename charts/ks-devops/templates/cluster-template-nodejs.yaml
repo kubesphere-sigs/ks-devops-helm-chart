@@ -34,8 +34,8 @@ spec:
       description: Shell script to build project.
       required: true
       default: "npm run build"
-    - name: ArtifactsPath
-      description: The path of artifacts.
+    - name: ArtifactsLocation
+      description: Artifacts location. e.g. dist/
       required: false
       default: "dist/"
   template: |
@@ -82,9 +82,9 @@ spec:
         stage('Archive artifacts') {
           steps {
             container('base') {
-              sh 'zip -r dist.zip $(.params.ArtifactsPath)'
+              sh 'zip -r dist.zip $(.params.ArtifactsLocation)'
             }
-            archiveArtifacts 'dist.zip'
+            archiveArtifacts(artifacts: 'dist.zip', followSymlinks: false)
           }
         }
       }
