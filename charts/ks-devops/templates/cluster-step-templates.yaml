@@ -27,7 +27,7 @@ spec:
       defaultValue: 'master'
       required: true
   template: |
-    {
+    {{`{
       "arguments": [
         {
           "key": "url",
@@ -66,7 +66,7 @@ spec:
         }
       ],
       "name": "git"
-    }
+    }`}}
 
 ---
 apiVersion: devops.kubesphere.io/v1alpha3
@@ -90,7 +90,7 @@ spec:
       type: secret
       display: 'Credential Name'
   template: |
-    {
+    {{`{
       "arguments": [
         {
           "key": "scm",
@@ -108,7 +108,7 @@ spec:
         }
       ],
       "name": "checkout"
-    }
+    }`}}
 
 ---
 # General
@@ -132,7 +132,7 @@ spec:
       display: 'The message to print'
       required: true
   template: |
-    {
+    {{`{
       "arguments": [
         {
           "key": "message",
@@ -143,7 +143,7 @@ spec:
         }
       ],
       "name": "echo"
-    }
+    }`}}
 
 ---
 apiVersion: devops.kubesphere.io/v1alpha3
@@ -165,7 +165,7 @@ spec:
       type: code
       display: 'Shell command line'
   template: |
-    {{.param.command}}
+    {{`{{.param.command}}`}}
 
 ---
 apiVersion: devops.kubesphere.io/v1alpha3
@@ -198,7 +198,7 @@ spec:
       display: 'Body'
       required: true
   template: |
-    {
+    {{`{
       "arguments": [
         {
           "key": "to",
@@ -230,7 +230,7 @@ spec:
         }
       ],
       "name": "mail"
-    }
+    }`}}
 
 ---
 apiVersion: devops.kubesphere.io/v1alpha3
@@ -280,7 +280,7 @@ spec:
       type: hidden
       defaultValue: 'PASSPHRASEVARIABLE'
   template: |
-    {{if eq .param.credentialsId.type "credential.devops.kubesphere.io/basic-auth"}}
+    {{`{{if eq .param.credentialsId.type "credential.devops.kubesphere.io/basic-auth"}}
       {
         "arguments": {
           "isLiteral": false,
@@ -316,7 +316,7 @@ spec:
         "children": [],
         "name": "withCredentials"
       }
-    {{end}}
+    {{end}}`}}
 
 ---
 apiVersion: devops.kubesphere.io/v1alpha3
@@ -339,7 +339,7 @@ spec:
       display: 'Artifacts Location'
       required: true
   template: |
-    {
+    {{`{
       "arguments": [
         {
           "key": "artifacts",
@@ -357,7 +357,7 @@ spec:
         }
       ],
       "name": "archiveArtifacts"
-    }
+    }`}}
 
 ---
 apiVersion: devops.kubesphere.io/v1alpha3
@@ -389,7 +389,7 @@ spec:
       type: bool
       defaultValue: 'false'
   template: |
-    {
+    {{`{
       "name": "timeout",
       "arguments": [
         {
@@ -415,7 +415,7 @@ spec:
         }
       ],
       "children": []
-    }
+    }`}}
 
 ---
 apiVersion: devops.kubesphere.io/v1alpha3
@@ -438,7 +438,7 @@ spec:
       display: 'Groovy script'
       required: true
   template: |
-    {
+    {{`{
       "arguments": [
         {
           "key": "scriptBlock",
@@ -449,7 +449,7 @@ spec:
         }
       ],
       "name": "script"
-    }
+    }`}}
 
 ---
 apiVersion: devops.kubesphere.io/v1alpha3
@@ -484,7 +484,7 @@ spec:
       display: 'Propagate Errors'
       defaultValue: "true"
   template: |
-    {
+    {{`{
       "arguments": [
         {
           "key": "quietPeriod",
@@ -516,7 +516,7 @@ spec:
         }
       ],
       "name": "build"
-    }
+    }`}}
 
 ---
 apiVersion: devops.kubesphere.io/v1alpha3
@@ -538,7 +538,7 @@ spec:
       type: string
       display: 'Error Message'
   template: |
-    {
+    {{`{
       "arguments": [
         {
           "key": "message",
@@ -549,7 +549,7 @@ spec:
         }
       ],
       "name": "error"
-    }
+    }`}}
 
 ---
 apiVersion: devops.kubesphere.io/v1alpha3
@@ -577,7 +577,7 @@ spec:
       options: '[{"label":"Seconds","value":"SECONDS"},{"label":"Minutes","value":"MINUTES"},{"label":"Hours","value":"HOURS"}]'
       display: 'Unit'
   template: |
-    {
+    {{`{
       "arguments": [
         {
           "key": "time",
@@ -595,7 +595,7 @@ spec:
         }
       ],
       "name": "sleep"
-    }
+    }`}}
 
 ---
 apiVersion: devops.kubesphere.io/v1alpha3
@@ -626,7 +626,7 @@ spec:
       type: bool
       display: 'Skip Publishing Checks'
   template: |
-    {
+    {{`{
       "arguments": [
         {
           "key": "allowEmptyResults",
@@ -658,7 +658,7 @@ spec:
         }
       ],
       "name": "junit"
-    }
+    }`}}
 
 ---
 apiVersion: devops.kubesphere.io/v1alpha3
@@ -680,14 +680,14 @@ spec:
       type: number
       display: 'Retry Count'
   template: |
-    {
+    {{`{
       "arguments": {
         "isLiteral": true,
         "value": {{.param.count}}
       },
       "children": [],
       "name": "retry"
-    }
+    }`}}
 
 ---
 # Review
@@ -715,7 +715,7 @@ spec:
       type: string
       display: 'Submitter'
   template: |
-    {
+    {{`{
       "arguments": [
         {
           "key": "message",
@@ -733,7 +733,7 @@ spec:
         }
       ],
       "name": "input"
-    }
+    }`}}
 
 ---
 apiVersion: devops.kubesphere.io/v1alpha3
@@ -756,14 +756,14 @@ spec:
       display: 'Config Name'
       required: true
   template: |
-    {
+    {{`{
       "arguments": {
         "isLiteral": true,
         "value": "{{.param.config}}"
       },
       "children": [],
       "name": "withSonarQubeEnv"
-    }
+    }`}}
 
 ---
 apiVersion: devops.kubesphere.io/v1alpha3
@@ -787,7 +787,7 @@ spec:
       display: "AbortPipeline if quality gate status is not green"
       defaultValue: "false"
   template: |
-    {
+    {{`{
       "arguments": [
         {
           "key": "abortPipeline",
@@ -798,7 +798,7 @@ spec:
         }
       ],
       "name": "waitForQualityGate"
-    }
+    }`}}
 
 ---
 # Container
@@ -821,14 +821,14 @@ spec:
       type: string
       display: 'Container Name'
   template: |
-    {
+    {{`{
       "arguments": {
         "isLiteral": true,
         "value": "{{.param.name}}"
       },
       "children": [],
       "name": "container"
-    }
+    }`}}
 
 ---
 apiVersion: devops.kubesphere.io/v1alpha3
@@ -870,7 +870,7 @@ spec:
       display: 'Credential'
       required: true
   template: |
-    {
+    {{`{
       "arguments": {
         "isLiteral": true,
         "value": "base"
@@ -899,7 +899,7 @@ spec:
         }
       ],
       "name": "container"
-    }
+    }`}}
 
 ---
 
