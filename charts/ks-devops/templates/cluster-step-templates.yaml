@@ -336,7 +336,7 @@ spec:
   parameters:
     - name: artifacts
       type: string
-      display: 'Artifacts Path'
+      display: 'Artifacts Location'
       required: true
   template: |
     {
@@ -615,7 +615,7 @@ spec:
   parameters:
     - name: testResults
       type: string
-      display: 'Report-File Path'
+      display: 'Test Results Location'
     - name: allowEmptyResults
       type: bool
       display: 'Allow Empty Results'
