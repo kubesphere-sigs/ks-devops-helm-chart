@@ -61,6 +61,7 @@ spec:
           {{- if .Values.argocd.enabled }}
           args:
           - --argocd-namespace={{ .Values.argocd.namespace }}
+          - --argocd-enabled=true
           {{- end}}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
