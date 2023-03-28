@@ -35,13 +35,12 @@ spec:
       initContainers:
         - name: "init-config"
           image: "{{ .Values.image.registry }}/{{ .Values.image.tools.repository }}:{{ .Values.image.tools.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           command:
-            - /jwt
-            - --output
-            - configmap
+            - devops-tool
+            - init-config
             - --namespace
             - {{ .Release.Namespace }}
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
