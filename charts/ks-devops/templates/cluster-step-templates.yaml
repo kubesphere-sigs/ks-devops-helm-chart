@@ -76,16 +76,16 @@ metadata:
   labels:
     step.devops.kubesphere.io/category: "SCM"
   annotations:
-    devops.kubesphere.io/displayNameZH: "SVN Clone"
-    devops.kubesphere.io/descriptionZH: "拉取 SVN 仓库的代码"
-    devops.kubesphere.io/displayNameEN: "SVN Clone"
-    devops.kubesphere.io/descriptionEN: "Pull code from the SVN-Repo"
+    devops.kubesphere.io/displayNameZH: "Checkout"
+    devops.kubesphere.io/descriptionZH: "拉取源代码，常用于拉取非 Git 仓库代码，例如 SVN 等等"
+    devops.kubesphere.io/displayNameEN: "Checkout"
+    devops.kubesphere.io/descriptionEN: "check out source code, often used for non-git repository, such as svn"
 spec:
   runtime: dsl
   parameters:
     - name: remote
       type: string
-      display: 'SVN URL'
+      display: 'Repository URL'
     - name: credentialsId
       type: secret
       display: 'Credential Name'
