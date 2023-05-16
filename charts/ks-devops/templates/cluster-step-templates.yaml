@@ -16,7 +16,7 @@ spec:
   parameters:
     - name: url
       type: string
-      display: 'URL'
+      display: 'Repository URL'
       required: true
     - name: credentialsId
       type: secret
@@ -26,6 +26,9 @@ spec:
       display: 'Branch'
       defaultValue: 'master'
       required: true
+    - name: importCodeRepo
+      type: importCodeRepo
+      reactions: {{`[{"target": "url", "fulfill": {"state": {"value": "{{$self.value?.url}}"}}}, {"target": "credentialsId", "fulfill": {"state": {"value": "{{$self.value?.secret}}"}}}]`}}
   template: |
     {{`{
       "arguments": [
@@ -83,12 +86,16 @@ metadata:
 spec:
   runtime: dsl
   parameters:
-    - name: remote
+    - name: url
       type: string
       display: 'Repository URL'
+      required: true
     - name: credentialsId
       type: secret
       display: 'Credential Name'
+    - name: importCodeRepo
+      type: importCodeRepo
+      reactions: {{`[{"target": "url", "fulfill": {"state": {"value": "{{$self.value?.url}}"}}}, {"target": "credentialsId", "fulfill": {"state": {"value": "{{$self.value?.secret}}"}}}]`}}
   template: |
     {{`{
       "arguments": [
@@ -96,7 +103,7 @@ spec:
           "key": "scm",
           "value": {
             "isLiteral": false,
-            "value": "[$class: 'SubversionSCM', locations: [[cancelProcessOnExternalsFail: true,  credentialsId: '{{.param.credentialsId.name}}', depthOption: 'infinity', ignoreExternalsOption: true, local: '.', remote: '{{.param.remote}}']], quietOperation: true, workspaceUpdater: [$class: 'UpdateUpdater']]"
+            "value": "[$class: 'SubversionSCM', locations: [[cancelProcessOnExternalsFail: true,  credentialsId: '{{.param.credentialsId.name}}', depthOption: 'infinity', ignoreExternalsOption: true, local: '.', remote: '{{.param.url}}']], quietOperation: true, workspaceUpdater: [$class: 'UpdateUpdater']]"
           }
         },
         {
