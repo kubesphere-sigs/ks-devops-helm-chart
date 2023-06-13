@@ -28,7 +28,7 @@ spec:
       required: true
     - name: importCodeRepo
       type: importCodeRepo
-      reactions: {{`[{"target": "url", "fulfill": {"state": {"value": "{{$self.value?.url}}"}}}, {"target": "credentialsId", "fulfill": {"state": {"value": "{{$self.value?.secret}}"}}}]`}}
+      reactions: {{`'[{"target": "url", "fulfill": {"state": {"value": "{{$context?.getRepoUrl?.($self.value)}}"}}}, {"target": "credentialsId", "fulfill": {"state": {"value": "{{$self.value?.secret}}"}}}]'`}}
   template: |
     {{`{
       "arguments": [
@@ -86,7 +86,7 @@ metadata:
 spec:
   runtime: dsl
   parameters:
-    - name: url
+    - name: remote
       type: string
       display: 'Repository URL'
       required: true
@@ -95,7 +95,7 @@ spec:
       display: 'Credential Name'
     - name: importCodeRepo
       type: importCodeRepo
-      reactions: {{`[{"target": "url", "fulfill": {"state": {"value": "{{$self.value?.url}}"}}}, {"target": "credentialsId", "fulfill": {"state": {"value": "{{$self.value?.secret}}"}}}]`}}
+      reactions: {{`'[{"target": "remote", "fulfill": {"state": {"value": "{{$context?.getRepoUrl?.($self.value)}}"}}}, {"target": "credentialsId", "fulfill": {"state": {"value": "{{$self.value?.secret}}"}}}]'`}}
   template: |
     {{`{
       "arguments": [
@@ -103,7 +103,7 @@ spec:
           "key": "scm",
           "value": {
             "isLiteral": false,
-            "value": "[$class: 'SubversionSCM', locations: [[cancelProcessOnExternalsFail: true,  credentialsId: '{{.param.credentialsId.name}}', depthOption: 'infinity', ignoreExternalsOption: true, local: '.', remote: '{{.param.url}}']], quietOperation: true, workspaceUpdater: [$class: 'UpdateUpdater']]"
+            "value": "[$class: 'SubversionSCM', locations: [[cancelProcessOnExternalsFail: true,  credentialsId: '{{.param.credentialsId.name}}', depthOption: 'infinity', ignoreExternalsOption: true, local: '.', remote: '{{.param.remote}}']], quietOperation: true, workspaceUpdater: [$class: 'UpdateUpdater']]"
           }
         },
         {
