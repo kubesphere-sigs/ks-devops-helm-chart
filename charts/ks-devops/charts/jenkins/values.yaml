@@ -18,16 +18,16 @@ Master:
   resources:
     requests:
       cpu: "50m"
-      memory: "256Mi"
+      memory: "4096Mi"
     limits:
       cpu: "2000m"
-      memory: "2048Mi"
+      memory: "4096Mi"
 
   UsePodSecurityContext: true
   JavaOpts: |-
     -XX:InitialRAMPercentage=70
     -XX:MaxRAMPercentage=70
-    -XX:MaxRAM=2g
+    -XX:MaxRAM=4g
     -Dhudson.slaves.NodeProvisioner.initialDelay=20
     -Dhudson.slaves.NodeProvisioner.MARGIN=50
     -Dhudson.slaves.NodeProvisioner.MARGIN0=0.85
