@@ -2,6 +2,10 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: jenkins-casc-config
+{{- if .Values.casc.devopsJenkinsConfigAnnotations }}
+  annotations:
+{{ toYaml .Values.casc.devopsJenkinsConfigAnnotations | indent 4 }}
+{{- end }}
 data:
   jenkins.yaml: |
     jenkins:
@@ -390,7 +394,7 @@ data:
                       fsGroup: 1000
 
       securityRealm:
-    {{- if eq .Values.securityRealm.type "ldap" }}
+    {{- if eq .Values.casc.securityRealm.type "ldap" }}
         ldap:
           configurations:
           - displayNameAttributeName: "uid"
@@ -403,7 +407,7 @@ data:
             userSearch: "(&(objectClass=inetOrgPerson)(|(uid={0})(mail={0})))"
             groupSearchBase: "ou=Groups"
             groupSearchFilter: "(&(objectClass=posixGroup)(cn={0}))"
-            server: "ldap://{{.Values.securityRealm.ldap.host }}"
+            server: "ldap://{{.Values.casc.securityRealm.ldap.host }}"
           disableMailAddressResolver: false
           disableRolePrefixing: true
     {{ else }}
