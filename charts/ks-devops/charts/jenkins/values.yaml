@@ -468,10 +468,12 @@ rbac:
   # Role kind (RoleBinding or ClusterRoleBinding)
   roleBindingKind: ClusterRoleBinding
 
-securityRealm:
-  type: local # support values include local, ldap
-  ldap:
-    host: openldap.kubesphere-system.svc:389
+casc:
+  devopsJenkinsConfigAnnotations: {}
+  securityRealm:
+    type: local # support values include local, ldap
+    ldap:
+      host: openldap.kubesphere-system.svc:389
 
 ksAuth:
   enabled: false
