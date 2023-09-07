@@ -26,10 +26,6 @@ spec:
                 - gc
               image: "{{ .Values.image.registry }}/{{ .Values.image.tools.repository }}:{{ .Values.image.tools.tag }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
-              args:
-                - "--max-count={{ .Values.gcJobs.maxCount }}"
-                - "--max-age={{ .Values.gcJobs.maxAge }}"
-                - "--condition=ignoreTime"
               name: "pipeline-run-gc"
               resources: {}
               terminationMessagePath: /dev/termination-log
