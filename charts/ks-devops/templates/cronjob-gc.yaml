@@ -1,5 +1,9 @@
 kind: CronJob
-apiVersion: {{ template "cronjob.apiversion" . }}
+{{- if .Capabilities.APIVersions.Has "batch/v1/CronJob" }}
+apiVersion: batch/v1
+{{- else }}
+apiVersion: batch/v1beta1
+{{- end }}
 metadata:
   name: {{ include "ks-devops.fullname" . }}
   labels:
