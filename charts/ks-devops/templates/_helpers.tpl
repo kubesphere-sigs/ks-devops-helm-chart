@@ -94,14 +94,3 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
-
-{{/*
-setup CronJob apiversion by k8s version
-*/}}
-{{- define "cronjob.apiversion" -}}
-{{- if semverCompare ">=1.24.0" .Capabilities.KubeVersion.GitVersion -}}
-{{- print "batch/v1" -}}
-{{- else }}
-{{- print "batch/v1beta1" -}}
-{{- end }}
-{{- end }}
