@@ -145,7 +145,7 @@ spec:
           "key": "message",
           "value": {
             "isLiteral": true,
-            "value": "{{.param.message}}"
+            "value": {{printf "%q" .param.message}}
           }
         }
       ],
@@ -410,7 +410,7 @@ spec:
           "key": "activity",
           "value": {
             "isLiteral": true,
-            "value": .param.activity
+            "value": {{.param.activity}}
           }
         },
         {
