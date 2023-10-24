@@ -145,7 +145,7 @@ spec:
           "key": "message",
           "value": {
             "isLiteral": true,
-            "value": "{{.param.message}}"
+            "value": {{printf "%q" .param.message}}
           }
         }
       ],
