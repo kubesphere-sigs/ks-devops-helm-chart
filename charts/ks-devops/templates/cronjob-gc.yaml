@@ -13,6 +13,7 @@ spec:
   failedJobsHistoryLimit: {{ .Values.gcJobs.failedJobsHistoryLimit }}
   jobTemplate:
     spec:
+      activeDeadlineSeconds: 3600
       template:
         metadata:
           labels:
